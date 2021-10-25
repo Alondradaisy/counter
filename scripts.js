@@ -19,6 +19,9 @@ function add() {
   numberDisplay;
   logCounter();
   countUpdateHandler();
+  if (counter >= 0) {
+    daisyComponent();
+  }
 }
 
 function remove() {
@@ -26,7 +29,9 @@ function remove() {
   numberDisplay();
   logCounter();
   countUpdateHandler();
-  console.log(daisyComponent());
+  if (counter > 0) {
+    daisyComponent();
+  }
 }
 
 //trigger add func when + is clicked
@@ -50,11 +55,18 @@ function numberDisplay() {
 
 //func to trigger addition of daisies matching numberCounter
 function daisyComponent() {
-  const daisyBox = document.createElement("DIV");
+  const section = document.querySelector(".daisy-container");
+  let daisyBox = document.createElement("div");
   daisyBox.innerHTML = `
     <div class="daisy-box">
       <img src="https://img2.svgdesigns.com/printart/large/FSL_Studio/pgfsl1655.jpg">
     </div>`;
+  section.appendChild(daisyBox);
 
   return daisyBox;
+}
+
+function deleteDaisy() {
+  const section = document.querySelector(".daisy-container");
+  section.removeChild(section.lastElementChild);
 }
